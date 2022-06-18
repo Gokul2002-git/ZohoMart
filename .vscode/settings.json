@@ -1,0 +1,10 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\servletApplications\\servlet-api\\javax.servlet-api-3.1.0.jar",
+        "c:\\servletApplications\\gson\\gson-2.8.2.jar",
+        "c:\\servletApplications\\my-sql\\mysql-connector-java-8.0.28.jar",
+        "c:\\servletApplications\\json\\json-20220320.jar",
+        "c:\\servletApplications\\servlet-api\\servlet-api-0.15.5.jar"
+    ]
+}
