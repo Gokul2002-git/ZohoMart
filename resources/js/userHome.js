@@ -19,8 +19,8 @@ $("#buyNow").submit(function(e){
         data:data,
         success:function(res){
             console.log(res);
-          
             window.location.replace("success");
+            
         },
         error:function(res){
             alert("Something went wrong");
