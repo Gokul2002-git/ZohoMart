@@ -115,6 +115,7 @@ function getcategoryproduct(categoryid)
         success:function(res)
         {
             console.log(res);
+            document.querySelector("#filterproduct").innerHTML=res[0].categoryname;
             document.querySelector("#productcard").innerHTML="";
             var dynamic=document.querySelector("#productcard");
         for(var i=0;i<res.length;i++)

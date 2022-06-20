@@ -60,6 +60,8 @@ public class buyNow extends HttpServlet{
             st.setInt(2,productid);
             st.executeUpdate();
 
+            session.setAttribute("price",price);
+
         }
         catch(Exception e)
         {

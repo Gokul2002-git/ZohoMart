@@ -45,6 +45,7 @@ public class cartOrder extends HttpServlet{
             Connection con = DriverManager.getConnection(dbURL + dbName,dbUsername,dbPassword);
             PreparedStatement st ;
             Iterator<String> it=obj.keys();
+            int totalprice=0;
             while(it.hasNext())
             {
                 int price=0,sellerId=0,totalquantity=0;
@@ -69,7 +70,7 @@ public class cartOrder extends HttpServlet{
                 st.setString(5, getDate());
                 st.setString(6, getTime());
                 st.executeUpdate();
-                
+                totalprice=totalprice+(price*quantity);
                 int updatequantity=totalquantity-quantity;
                 st = con.prepareStatement("UPDATE products SET quantity=? WHERE productId=? ");
                 st.setInt(1,updatequantity);
@@ -79,6 +80,8 @@ public class cartOrder extends HttpServlet{
             st= con.prepareStatement("DELETE FROM cart WHERE UserId=?");
             st.setInt(1, userid);
             st.executeUpdate();
+
+            session.setAttribute("price",totalprice);  
 
 
         }

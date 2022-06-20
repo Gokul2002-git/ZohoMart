@@ -29,7 +29,7 @@ $.ajax({
         }
 
         
-        document.getElementById("totalprice").innerHTML="Total Price : "+totalprice+"/-";
+        // document.getElementById("totalprice").innerHTML="Total Price : "+totalprice+"/-";
     }
 
 });
