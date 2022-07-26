@@ -21,7 +21,7 @@ public class getUserProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
                 HttpSession session = req.getSession();
-                int sellerid = (int) session.getAttribute("id");
+                int userid = (int) session.getAttribute("id");
                 try {
                     
                     String dbDriver = "com.mysql.jdbc.Driver";
@@ -37,6 +37,12 @@ public class getUserProduct extends HttpServlet {
                     ResultSetMetaData rsmd = rs.getMetaData();
 
 
+                    PreparedStatement st1 = con.prepareStatement("select * from users where userId=?");
+                    st1.setInt(1, userid);
+                    ResultSet rs1=st1.executeQuery();
+                    ResultSetMetaData rsmd1 = rs1.getMetaData();
+
+
                     JSONArray json = new JSONArray();
                     while(rs.next()) {
                       int numColumns = rsmd.getColumnCount();
@@ -45,8 +51,21 @@ public class getUserProduct extends HttpServlet {
                         String column_name = rsmd.getColumnName(i);
                         obj.put(column_name, rs.getObject(column_name));
                       }
+                      
                       json.put(obj);
                     }
+                    while(rs1.next()) {
+                      int numColumns = rsmd1.getColumnCount();
+                      JSONObject obj = new JSONObject();
+                      for (int i=1; i<=numColumns; i++) {
+                        String column_name = rsmd1.getColumnName(i);
+                        obj.put(column_name, rs1.getObject(column_name));
+                      }
+                      
+                      json.put(obj);
+                    }
+
+                   
                     res.setContentType("application/json");
 	                res.setCharacterEncoding("UTF-8");
 	                res.getWriter().print(json.toString());

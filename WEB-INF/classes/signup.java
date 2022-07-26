@@ -35,6 +35,7 @@ public class signup extends HttpServlet{
         String mobileNumber=req.getParameter("mobilenumber");
         String password=req.getParameter("password");
         String confirmPassword=req.getParameter("confirmpassword");
+        String address=req.getParameter("address");
         String role=req.getParameter("optradio");
         
         try {
@@ -67,12 +68,13 @@ public class signup extends HttpServlet{
                     res.getWriter().print("password mismatch");
                     return;
                 }
-                st = con.prepareStatement("insert into users(name,mobilenumber,password,date,time)values(?,?,?,?,?)");
+                st = con.prepareStatement("insert into users(name,mobilenumber,password,date,time,address)values(?,?,?,?,?,?)");
 		        st.setString(1,name);
 		        st.setString(2,mobileNumber);
 		        st.setString(3,password);
 		        st.setString(4,getDate());
                 st.setString(5,getTime());
+                st.setString(6, address);
 		        st.executeUpdate();
 		        st.close();
             }

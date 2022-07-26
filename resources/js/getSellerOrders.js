@@ -20,6 +20,7 @@ $.ajax({
               <h5 class="card-title" style="color:#99A3A4">Price : ${res[i].price} /-</h5>
              <p style="margin-top:50px; ">Ordered By : ${res[i].name}</p>
              <p>Mobile Number : ${res[i].mobilenumber}</p>
+             <p>Delivery Address : ${res[i].address}</p>
               <p >Order date :  ${res[i].date}</p>
 
              <p>Order time :  ${res[i].time}</p>

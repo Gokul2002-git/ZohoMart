@@ -39,14 +39,14 @@ function totalpriceupdate()
     $("#buynowtotal").val(quantity*price);
 }
 //set order summary
-function setordersummary(name,price,quantity,productid)
+function setordersummary(name,price,quantity,productid,address)
 {
     var qty=$("#qty").val();
     // alert(name+" "+price+" "+qty);
     
     $("#buynowProductname").val(name);
     $("#buynowprice").val(price);
-  
+    $("#buynowaddress").val(address);
     $("#buynowquantity").val(1);
     $("#buynowquantity").attr("max",quantity);
     $("#buynowtotal").val(price);
@@ -118,7 +118,7 @@ function getcategoryproduct(categoryid)
             document.querySelector("#filterproduct").innerHTML=res[0].categoryname;
             document.querySelector("#productcard").innerHTML="";
             var dynamic=document.querySelector("#productcard");
-        for(var i=0;i<res.length;i++)
+        for(var i=0;i<res.length-1;i++)
         {
             var fetch=document.querySelector("#productcard").innerHTML;
             dynamic.innerHTML=`      <div class="card">
@@ -136,7 +136,7 @@ function getcategoryproduct(categoryid)
             
             <div class="btn-group">
             <button type="button" class="btn btn-default" id="cartbtn" onclick="addToCart(${res[i].productId})">ADD TO CART</button>
-            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#buynowModal" onclick="setordersummary('${res[i].productname}',${res[i].price},${res[i].quantity},${res[i].productId})" >BUY NOW</button>
+            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#buynowModal" onclick="setordersummary('${res[i].productname}',${res[i].price},${res[i].quantity},${res[i].productId},'${res[res.length-1].address}')" >BUY NOW</button>
           </div>
 
           </div>`+ fetch;

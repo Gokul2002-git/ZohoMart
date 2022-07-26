@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -38,9 +37,8 @@ public class addProduct extends HttpServlet{
         return time;
 
     }
-    public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException
-	{
-        
+        public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException
+        {      
         Part filePart = req.getPart("file");
         String fileName = filePart.getSubmittedFileName();
             // System.out.println();

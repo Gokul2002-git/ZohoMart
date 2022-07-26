@@ -30,7 +30,7 @@ public class getSellerOrders extends HttpServlet {
                     String dbPassword = "Gokul@2002";
                     Class.forName(dbDriver);
                     Connection con = DriverManager.getConnection(dbURL + dbName,dbUsername,dbPassword);
-                    PreparedStatement st = con.prepareStatement("select products.sellerId,orders.date,orders.time,orders.quantity,orders.price,products.productname,products.image,users.name,users.mobilenumber from orders join users on orders.userId=users.userId join products on products.productId=orders.productId having sellerId=?");
+                    PreparedStatement st = con.prepareStatement("select products.sellerId,orders.date,orders.time,orders.quantity,orders.price,products.productname,products.image,users.name,users.mobilenumber,users.address from orders join users on orders.userId=users.userId join products on products.productId=orders.productId having sellerId=?");
                     st.setInt(1, sellerId);
                     ResultSet rs=st.executeQuery();
                     ResultSetMetaData rsmd = rs.getMetaData();

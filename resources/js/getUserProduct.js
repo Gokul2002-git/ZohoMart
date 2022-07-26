@@ -6,7 +6,7 @@ $.ajax({
         console.log(res);
         // alert(res.length);
         var dynamic=document.querySelector("#productcard");
-        for(var i=0;i<res.length;i++)
+        for(var i=0;i<res.length-1;i++)
         {
             var fetch=document.querySelector("#productcard").innerHTML;
 
@@ -23,7 +23,7 @@ $.ajax({
           
             <div class="btn-group">
             <button type="button" class="btn btn-default" id="cartbtn" onclick="addToCart(${res[i].productId})">ADD TO CART</button>
-            <button type="button"  onclick="setordersummary('${res[i].productname}',${res[i].price},${res[i].quantity},${res[i].productId})" class="btn btn-primary" id="buybtn" data-toggle="modal" data-target="#buynowModal">BUY NOW</button>
+            <button type="button"  onclick="setordersummary('${res[i].productname}',${res[i].price},${res[i].quantity},${res[i].productId},'${res[res.length-1].address}')" class="btn btn-primary" id="buybtn" data-toggle="modal" data-target="#buynowModal">BUY NOW</button>
           </div>
 
           </div>`+ fetch;

@@ -21,6 +21,8 @@ public class getCategoryProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
                 int categoryid=Integer.parseInt(req.getParameter("id"));
+                HttpSession session = req.getSession();
+                int userid = (int) session.getAttribute("id");
                 try {
                     
                     String dbDriver = "com.mysql.jdbc.Driver";
@@ -35,6 +37,13 @@ public class getCategoryProduct extends HttpServlet {
                     ResultSet rs=st.executeQuery();
                     ResultSetMetaData rsmd = rs.getMetaData();
 
+                    
+                    PreparedStatement st1 = con.prepareStatement("select * from users where userId=?");
+                    st1.setInt(1, userid);
+                    ResultSet rs1=st1.executeQuery();
+                    ResultSetMetaData rsmd1 = rs1.getMetaData();
+
+
                     JSONArray json = new JSONArray();
                     while(rs.next()) {
                       int numColumns = rsmd.getColumnCount();
@@ -45,6 +54,17 @@ public class getCategoryProduct extends HttpServlet {
                       }
                       json.put(obj);
                     }
+                    while(rs1.next()) {
+                      int numColumns = rsmd1.getColumnCount();
+                      JSONObject obj = new JSONObject();
+                      for (int i=1; i<=numColumns; i++) {
+                        String column_name = rsmd1.getColumnName(i);
+                        obj.put(column_name, rs1.getObject(column_name));
+                      }
+                      
+                      json.put(obj);
+                    }
+
                     res.setContentType("application/json");
 	                res.setCharacterEncoding("UTF-8");
 	                res.getWriter().print(json.toString());
