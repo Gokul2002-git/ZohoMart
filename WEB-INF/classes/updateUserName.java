@@ -18,6 +18,7 @@ public class updateUserName extends HttpServlet {
                 HttpSession session = req.getSession();
                 int userid = (int) session.getAttribute("id");
                 String name=req.getParameter("name");
+                String address=req.getParameter("address");
                 
                 try {
                     
@@ -28,9 +29,10 @@ public class updateUserName extends HttpServlet {
                     String dbPassword = "Gokul@2002";
                     Class.forName(dbDriver);
                     Connection con = DriverManager.getConnection(dbURL + dbName,dbUsername,dbPassword);
-                    PreparedStatement st = con.prepareStatement("UPDATE users SET name=? where userId=?");
+                    PreparedStatement st = con.prepareStatement("UPDATE users SET name=?,address=? where userId=?");
                     st.setString(1, name);
-                    st.setInt(2, userid);
+                    st.setString(2, address);
+                    st.setInt(3, userid);
                     st.executeUpdate();
                     
                     

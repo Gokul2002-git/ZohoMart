@@ -187,8 +187,10 @@ $("#changepassword").submit(function(e)
 function updatename(){
     if (confirm("Are you sure to update profile?")) {    
     var name=$("#username").val();
+    var address=$("#useraddress").val();
     var data={
-        "name":name
+        "name":name,
+        "address":address
     };
     $.ajax({
         url:"updateusername",
@@ -205,5 +207,6 @@ function updatename(){
 //set edit name
 function editname(){
     document.getElementById("username").disabled = false;
+    document.getElementById("useraddress").disabled = false;
 
 }

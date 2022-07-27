@@ -49,6 +49,7 @@
           <li><a href="#" data-toggle="modal" data-target="#profileModal" style="font-family: Lucida Console;" ><span class="fa fa-user"></span> My Profile</a></li>
         
           <li><a href="#" data-toggle="modal" data-target="#passwordModal" style="font-family: Lucida Console;" ><i class="fa fa-unlock-alt" aria-hidden="true"></i>  Change password</a></li>
+        
           <hr><li><a href="#" style="font-family: Lucida Console;" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     
         </ul>
@@ -147,12 +148,16 @@
             <div style="padding:20px ;">
               <form >
                   <div class="form-group">
-                    <label for="email">Name</label>
+                    <label for="name">Name</label>
                     <input type="text" class="form-control" id="username" name="username" disabled>
                   </div>
                   <div class="form-group">
-                    <label for="email">Mobile Number</label>
+                    <label for="mobile">Mobile Number</label>
                     <input type="text" class="form-control" id="usernumber" name="usernumber" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="useraddress" name="useraddress" disabled>
                   </div>
                
                   <p id="" style="color:red ;text-align: center;"></p>
@@ -209,7 +214,9 @@
       </div>
     
   </div>  
- 
+
+  
+  
   <script src="resources/js/userHome.js"></script>
 </body>
 </html>
